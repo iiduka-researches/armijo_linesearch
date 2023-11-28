@@ -1,33 +1,22 @@
-import datetime
 import time
 import sys
-import pytz
-import random
 from torchvision import transforms
-from torchvision.datasets import CIFAR100
-from torchvision.datasets import CIFAR10
-from torchvision.datasets import MNIST
-from adabelief_pytorch import AdaBelief
+from torchvision.datasets import (CIFAR100,CIFAR10,MNIST)
 import torchvision
 from torch import optim
 import torch
 import torch.nn as nn
 from torch.utils.data import(Dataset,DataLoader,TensorDataset)
-import tqdm
-import gzip
 import os
-import urllib.request
 import sys
-import pickle
 import torchvision.transforms as transforms
-import torchvision.datasets as datasets
 import numpy as np
-import math
 from models import (resnet_cifar100,resnet_cifar10,mnist_mlp)
 def get_model(dataset_name):
-    if dataset_name=='CIFAR100' or 'CIFAR10':
-        print('ResNet34')
+    if dataset_name=='CIFAR100':
         return resnet_cifar100.ResNet34()
+    elif dataset_name=='CIFAR10':
+        return resnet_cifar10.ResNet34()
     
     elif dataset_name=='MNIST':
         print('mnist_mlp')
@@ -114,10 +103,6 @@ def get_dir_name():
         if (sum(os.path.isfile(os.path.join('result/'+dir_name+'_'+str(dir_count),name)) for name in os.listdir('result/'+dir_name+'_'+str(dir_count))))==0:
             dir_name=dir_name+'_'+str(dir_count)
             return dir_name
-        dir_count+=1
-    dir_name=dir_name+'_'+str(dir_count)
-    os.mkdir('result/'+dir_name)
-    return dir_name
 
 def mkdir(dir_name):
     print('mkdir '+dir_name)
@@ -193,7 +178,6 @@ def train_net(dataset_name,net,train_set,test_set,optimizer,n_iter,device,alg_na
         ptrain_acc='{:.5f}'.format(train_acc[-1])
         pval_acc='{:.5f}'.format(val_acc[-1])
         pval_acc_5='{:.5f}'.format(val_acc_5[-1])
-        pgrad_norm='{:.5f}'.format(grad_norm)
         print(f'e:{epoch},l:{ptrain_losses},t_acc{ptrain_acc},v_acc:{pval_acc},val_acc_5:{pval_acc_5}')
 
 
@@ -209,7 +193,7 @@ def train_net(dataset_name,net,train_set,test_set,optimizer,n_iter,device,alg_na
                 'train_acces': train_acces,
                 'test_acces':test_acces,
                 'timesCPU': timesCPU,
-                'epochs': epochs,
+                'epochs': epochs,}
 
     return dict_result
 
