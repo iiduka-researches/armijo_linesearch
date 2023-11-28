@@ -5,7 +5,7 @@ import math
 import train_utils as tu
 import pickle
 import argparse  
-from train_utils import (train_net,train_sfo)
+from train_utils import train_net
 from optimizers import sls,optim_list
 
 
@@ -20,8 +20,8 @@ parser.add_argument('--c',type=float,help='c',default=0.1)
 parser.add_argument('--algorithm',type=str,help='algorithm',default='SGD+Armijo')
 
 args = parser.parse_args()     
+dir_name=args.dir
 
-dir_name='result/'+args.dataset+'/'+args.dir
 print(f'dir_name: {dir_name}')
 if not os.path.isdir(dir_name):
     os.mkdir(dir_name)
