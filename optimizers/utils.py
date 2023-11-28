@@ -41,29 +41,6 @@ def check_strong_wolfe_conditions(step_size, step_size_old, loss, grad_current,d
         step_size=step_size*beta_b
     return found, step_size, step_size_old
 
-def check_wolfe_conditions(step_size, step_size_old, loss, grad_current,direction_current,
-                      loss_next, c1,c2, beta_b,grad_next_t_grad_current,grad_norm):
-    found = 0
-    break_condition = loss_next - \
-        (loss - (step_size) * c1 * grad_norm**2)
-
-    if (break_condition <= 0):
-        b=(grad_next_t_grad_current)-(grad_norm**2)
-
-        print(int(b))
-        if (b<=0):
-            found = 1
-        else:
-            step_size = step_size * beta_b
-
-
-    else:
-        # decrease the step-size by a multiplicative factor
-        step_size = step_size * beta_b
-
-    return found, step_size, step_size_old
-
-
 
 def reset_step(step_size, n_batches_per_epoch=None, gamma=None, reset_option=1,
                init_step_size=None):
