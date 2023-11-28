@@ -11,6 +11,7 @@ Use linesearch in your code by adding the following script.
 import optimizers.sls
 opt = sls.SGD(model.parameters())
 for epoch in range(100):
+      ...
       # create loss closure
       closure = lambda : torch.nn.CrossEntropyLoss()(model(X), y)
 
