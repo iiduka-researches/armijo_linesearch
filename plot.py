@@ -5,14 +5,15 @@ import matplotlib.pyplot as plt
 l_all=[]
 step_list=[]
 batch_size_list=[]
-
 list_all=[]
+
 dataset_name='CIFAR10'
 batch_size=128
-dir_name='result/'+dataset_name+'/test/'
+dir_name='test'
+
 algo_list=['SGD','SGD+Armijo']
 c_list=[0.1,0.01]
-
+dir_name='result/'+dataset_name+dir_name
 
 for algo in algo_list:
     if 'Armijo' in algo:
