@@ -7,7 +7,7 @@ import train_utils as tu
 import pickle
 import argparse  
 from train_utils import train_net
-from optimizers import (sls,sps,fmls,SGD,Adam,adasls,lamb,SGD_add,sam)
+from optimizers import sls
 import numpy as np
 import os
 from datasets import get_datasets
