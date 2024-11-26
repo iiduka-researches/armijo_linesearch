@@ -1,15 +1,25 @@
 from plot_utils import *
 import pickle
 import matplotlib.pyplot as plt
+import argparse
 
 l_all=[]
 step_list=[]
 batch_size_list=[]
 list_all=[]
 
-dataset_name='CIFAR10'
-batch_size=128
-dir_name='test'
+parser = argparse.ArgumentParser()  
+parser.add_argument('--dataset',type=str,help='dataset',default='CIFAR10')
+parser.add_argument('--dir', type=str,help='directly',default='test') 
+parser.add_argument('--batch',type=int,help='batch size',default='128')
+
+args = parser.parse_args()     
+
+
+dataset_name=args.dataset
+dir_name=args.dir
+batch_size=args.batch_size
+
 
 algo_list=['SGD','SGD+Armijo']
 c_list=[0.1,0.01]
