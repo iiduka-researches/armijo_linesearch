@@ -21,7 +21,7 @@ for epoch in range(100):
 ```
 
 #### select algorithm
-`python train.py --cuda 0 --batch 128 --dataset CIFAR100 --algorithm SGD+Armijo --dir 'your_directly'`
+`python train.py --cuda 0 --batch 128 --dataset CIFAR100 --algorithm SGD+Armijo --dir test`
 
 #### plot accuracy
-`python plot_list/plot_accuracy --dir 'your_directly'`
+`python plot.py`
