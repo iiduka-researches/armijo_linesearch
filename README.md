@@ -21,7 +21,7 @@ for epoch in range(100):
 ```
 
 #### select algorithm
-`python train.py --cuda 0 --batch 128 --dataset CIFAR100 --algorithm SGD+Armijo --dir test`
+`python train.py --cuda 0 --batch 128 --dataset CIFAR100 --dir test`
 
-#### plot accuracy
+#### plot
 `python plot.py`
