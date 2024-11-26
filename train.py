@@ -95,10 +95,11 @@ for alg_name in alg_list:
             print(alg_name+'is not registered')
             sys.exit(1
             )
+        del net
     file_name=tu.get_file_name(dataset_name,batch_size,alg_name)
     print(file_name)
     with open(dir_name+'/'+file_name,'wb')as p:
         pickle.dump(l,p)
 
-    del net
+
     torch.cuda.empty_cache()
