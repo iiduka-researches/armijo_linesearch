@@ -18,12 +18,12 @@ args = parser.parse_args()
 
 dataset_name=args.dataset
 dir_name=args.dir
-batch_size=args.batch_size
+batch_size=args.batch
 
 
 algo_list=['SGD','SGD+Armijo']
 c_list=[0.1,0.01]
-dir_name='result/'+dataset_name+dir_name
+dir_name='result/'+dataset_name+'/'+dir_name+'/'
 
 for algo in algo_list:
     if 'Armijo' in algo:
