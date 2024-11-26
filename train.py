@@ -57,8 +57,6 @@ alg_list=['SGD','SGD+Armijo']
 c_list=[0.1,0.01]
 
 for alg_name in alg_list:
-    print(dataset_name)
-    
     if 'Armijo' in alg_name:
         for c in c_list:
 
