@@ -28,8 +28,6 @@ def get_models(dataset_name):
         print('mnist_mlp')
         return ResNet18m()
         #return models.wide_resnet50_2(num_classes=10)
-
-        #return WideResNet502() 
     
     elif dataset_name=='imagenet':
         return timm.create_model('vit_huge_patch14_224', pretrained=False,)
@@ -38,16 +36,6 @@ def get_models(dataset_name):
         num_ftrs = resnet.fc.in_features
         resnet.fc = nn.Linear(num_ftrs, 1000)
         return resnet'''
-    
-    elif dataset_name=='imdb':
-        INPUT_DIM = 25002
-        EMBEDDING_DIM = 100
-        HIDDEN_DIM = 256
-        OUTPUT_DIM = 1
-        N_LAYERS = 2
-        BIDIRECTIONAL = True
-        DROPOUT = 0.5
-        return LSTMModel(INPUT_DIM, EMBEDDING_DIM, HIDDEN_DIM, OUTPUT_DIM, N_LAYERS, BIDIRECTIONAL, DROPOUT)
 
 
 class BasicBlockm(nn.Module):  # BasicBlock を BasicBlockm に変更
@@ -74,7 +62,6 @@ class BasicBlockm(nn.Module):  # BasicBlock を BasicBlockm に変更
         out = F.relu(out)
         return out
 
-# ResNet18の定義
 class ResNetm(nn.Module):
     def __init__(self, block, num_blocks, num_classes=10):
         super(ResNetm, self).__init__()
@@ -111,20 +98,6 @@ class ResNetm(nn.Module):
         out = self.fc(out)
         return out
 
-
-class LSTMModel(nn.Module):
-    def __init__(self, vocab_size, embedding_dim, hidden_dim, output_dim, num_layers, bidirectional, dropout):
-        super(LSTMModel, self).__init__()
-        self.embedding = nn.Embedding(vocab_size, embedding_dim)
-        self.lstm = nn.LSTM(embedding_dim, hidden_dim, num_layers=num_layers, bidirectional=bidirectional, dropout=dropout)
-        self.fc = nn.Linear(hidden_dim * 2 if bidirectional else hidden_dim, output_dim)
-        self.dropout = nn.Dropout(dropout)
-
-    def forward(self, text):
-        embedded = self.embedding(text)
-        output, (hidden, cell) = self.lstm(embedded)
-        self.fc(self.dropout(output[-1, :, :]))
-
 class BasicBlock(nn.Module):
     expansion = 1
 
@@ -149,7 +122,6 @@ class BasicBlock(nn.Module):
         out = F.relu(out)
         return out
 
-# ResNet18の定義
 
 
 class MLP(nn.Module):
@@ -257,9 +229,6 @@ class WideResNet(nn.Module):
         out = F.avg_pool2d(out, 8)
         out = out.view(-1, self.nChannels)
         return self.fc(out)
-
-
-# test()
 
 
 
