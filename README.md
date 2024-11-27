@@ -20,7 +20,9 @@ for epoch in range(100):
 ```
 
 #### Install
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 #### training
 ```
