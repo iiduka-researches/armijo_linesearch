@@ -5,16 +5,6 @@ import torchvision.transforms as transforms
 import torch
 import random
 import numpy as np
-seed = 1
-torch.manual_seed(seed)
-torch.cuda.manual_seed(seed)
-np.random.seed(seed)
-random.seed(seed)
-
-# CuDNNのバックエンドにも乱数シードを設定します（GPUを使用する場合）
-if torch.cuda.is_available():
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
 
 def get_datasets(dataset_name):
     if dataset_name=='CIFAR100':
@@ -73,16 +63,3 @@ def get_datasets(dataset_name):
 
 
         return trainset,testset
-
-    elif dataset_name=='imdb':
-        TEXT = Field(tokenize='spacy', include_lengths=True)
-        LABEL = LabelField(dtype=torch.float)
-
-        # IMDbデータセットをダウンロード
-        train_data, test_data = IMDB.splits(TEXT, LABEL)
-
-        # ボキャブラリの構築
-        TEXT.build_vocab(train_data, max_size=25000, vectors="glove.6B.100d")
-        LABEL.build_vocab(train_data)
-
-        return train_data,test_data
