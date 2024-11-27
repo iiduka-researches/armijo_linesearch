@@ -1,7 +1,6 @@
 ### Experiments
 
-#### Install the experiment requirements 
-`pip install -r requirements.txt`
+
 
 
 ### Usage
@@ -19,6 +18,9 @@ for epoch in range(100):
       opt.zero_grad()
       loss = opt.step(closure=closure)
 ```
+
+#### Install
+```pip install -r requirements.txt```
 
 #### training
 ```
