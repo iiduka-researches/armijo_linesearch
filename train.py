@@ -51,7 +51,7 @@ model=args.model
 batch_size=args.batch
 weight_decay=0
 train_set,test_set=get_datasets(dataset_name)
-epoch=5
+epoch=200
 
 alg_list=['SGD','SGD+Armijo']
 c_list=[0.1,0.01]
