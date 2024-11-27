@@ -6,7 +6,6 @@ import argparse
 l_all=[]
 step_list=[]
 batch_size_list=[]
-list_all=[]
 
 parser = argparse.ArgumentParser()  
 parser.add_argument('--dataset',type=str,help='dataset',default='CIFAR10')
