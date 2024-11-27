@@ -88,11 +88,6 @@ def plot_results(list_results,dir_name,dataset_name):
     plt.clf()
     plt.close()
 
-
-
-
-
-
     fig, ax = plt.subplots(figsize = (16,8))
     fig.patch.set_facecolor('white')
 
