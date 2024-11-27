@@ -1,8 +1,3 @@
-### Experiments
-
-
-
-
 ### Usage
 Use linesearch in your code by adding the following script.
 
