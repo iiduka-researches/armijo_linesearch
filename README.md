@@ -20,7 +20,7 @@ for epoch in range(100):
       loss = opt.step(closure=closure)
 ```
 
-#### select algorithm
+#### training
 `python train.py --cuda 0 --batch 128 --dataset CIFAR100 --dir test`
 
 #### plot
