@@ -21,10 +21,10 @@ for epoch in range(100):
 ```
 
 #### training
-```python
+```
 `python train.py --cuda 0 --batch 128 --dataset CIFAR100 --dir test`
 ```
 #### plot
-```python
+```
 `python plot.py`
 ```
