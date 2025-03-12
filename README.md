@@ -3,15 +3,12 @@ Use linesearch in your code by adding the following script.
 
 ```python
 import optimizers.sls
-opt = sls.SGD(model.parameters())
-for epoch in range(100):
-      ...
+  for i, (xx, yy) in enumerate(train_loader):
       # create loss closure
-      closure = lambda : torch.nn.CrossEntropyLoss()(model(X), y)
-
+      closure = lambda: nn.CrossEntropyLoss(reduction='mean')(net(xx), yy)
       # update parameters
-      opt.zero_grad()
-      loss = opt.step(closure=closure)
+      optimizer.zero_grad()
+      optimizer.step(closure=closure)
 ```
 
 #### Install
